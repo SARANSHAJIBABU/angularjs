@@ -1,0 +1,50 @@
+<div ng-controller="MailListingController">
+<input type="search" placeholder="Filter messages" ng-model="search.$"/>
+<input type="search" placeholder="Filter messages by sender" ng-model="search.from"/>
+<input type="search" placeholder="Filter messages by subject" ng-model="search.subject"/>
+
+<ul>
+	<li ng-repeat="mail in (email| orderBy:'sent_at':true|limitTo:4|filter:search)" ng-click="setSelectedMail(mail)">
+		<div ng-class="{selected: isSelected(mail)}">
+			<div>{{mail.from}}</div>
+			<div>{{mail.subject }}</div>
+		</div>
+	</li>
+</ul>	
+</div>
+
+<div ng-controller="ContentController">
+	<h2>Content</h2>
+	<div ng-show="!selectedMail">
+		<h1>No conversation  selected</h1>
+	</div>	
+
+	<div ng-show="selectedMail">
+		<form ng-submit="sendEmailReply()" ng-show="showingReply">
+			<div>
+				<div>
+					<span>To</span>
+				</div>
+				<div>
+					<input ng-model="reply.to" type="email" placeholder=""> 
+				</div>
+
+				<div>
+					<textarea ng-model="reply.body">{{reply.body}}</textarea>
+				</div>
+			</div>
+
+			<button ng-click="sendReply()">Send</button>
+			<button ng-click="toggleReply()">Cancel</button>
+		</form>
+		<div>
+			<div>{{selectedMail.subject}}</div>
+			<div>{{selectedMail.sent_at|date:'dd/MM/yy'}}</div>
+		</div>
+		<div>
+			<div>{{selectedMail.from.join(",")}} to {{selectedMail.to}}</div>
+			<a ng-click="toggleReply()">Reply</a>
+		</div>
+		<div ng-bind-html-unsafe="selectedMail.body"></div>
+	</div>
+</div>

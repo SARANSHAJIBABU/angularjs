@@ -1,0 +1,22 @@
+<html ng-app="myApp">
+<head>
+</head>
+
+<body>
+	<nav>
+		<ul>
+			<li>
+				 <h1><a>Mail</a></h1>
+			</li>	
+		</ul>	
+		<section>
+			<ul>
+				<li ng-show="loading"><img src="images/spinner.gif"></li>
+				<li><a href="#/"><img src="images/home.gif"></a></li>
+				<li><a href="#/settings"><img src="images/settings.gif"></a></li>			
+			</ul>
+		</section>
+	</nav>
+	<div ng-view></div> 
+</body>
+</html>

@@ -1,0 +1,53 @@
+<div>
+	<h1>Update your settings</h1>
+	<form name="form" ng-submit="updateSettings()">
+		<fieldset>
+			<legend>Update Settings</legend>
+
+			<div>
+				<div>
+					<label>Name</label>
+					<input type="text" placeholder="Name" name="name" ng-model="settings.name" ng-minlength=3
+					ng-maxlength=20 ng-pattern="/^[a-zA-Z]+$/" required>
+
+					<div ng-show="form.name.$dirty && form.name.$invalid">
+						<div ng-show=form.name.$error.required>Your name is required</div>
+						<div ng-show=form.name.$error.minlength>Your name must be greater than 3 chars/div>
+						<div ng-show=form.name.$error.maxlength>Your name must be lesser than 20 chars/div>
+						There is an error with the name attribute
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div>
+					<label>Email</label>
+					<input type="email" placeholder="Email" name="email" ng-model="settings.email">
+					<div ng-show="form.email.$dirty && form.email.$invalid">
+						<span ng-show=form.email.$error.email>There is no valid email</span>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div>
+					<label>Age</label>
+					<input type="number" placeholder="Age" name="age" ng-model="settings.age" min=3 max=200>
+					<div ng-show="form.age.$dirty && form.age.$invalid">
+						<span ng-show=form.age.$error.min>Below min age</span>
+						<span ng-show=form.age.$error.max>Above max age</span>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div>
+					<label>Name</label>
+					<button type="submit" ng-disabled="form.$dirty && form.$invalid">Update</button>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+ß

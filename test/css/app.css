@@ -1,0 +1,18 @@
+.ng-pristine{ //when no change
+
+}
+
+.ng-dirty{  //when change happens
+
+}
+
+.ng-invalid.ng-dirty{
+
+}
+.ng-valid.ng-dirty{
+
+}
+
+input.ng-invalid-minlength.ng-dirty{
+	
+}
